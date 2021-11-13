@@ -1,8 +1,12 @@
 class FizzBuzz {
     fun getOutput(number: String): String {
-        return if (isDivisibleBy3(number)){
+        return if (isDivisibleBy3(number) && isDivisibleBy5(number)){
+            "FizzBuzz"
+        }
+        else if (isDivisibleBy3(number)){
             "Fizz"
-        } else if (isDivisibleBy5(number)){
+        }
+        else if (isDivisibleBy5(number)){
             "Buzz"
         } else {
             number

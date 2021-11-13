@@ -4,7 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import kotlin.test.assertEquals
 
-internal class FizzBuzzShould() {
+internal class FizzBuzzShould {
 
     private lateinit var fizzBuzz: FizzBuzz
 
@@ -26,8 +26,20 @@ internal class FizzBuzzShould() {
 
     @ParameterizedTest
     @ValueSource(strings = ["5", "10"])
-    fun `return FizzBuzz if number is divisible by 5`(number: String) {
+    fun `return Buzz if number is divisible by 5`(number: String) {
         assertEquals("Buzz", fizzBuzz.getOutput(number))
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["15", "30", "45"])
+    fun `return FizzBuzz if number is divisible by 3 and 5 `(number: String) {
+        assertEquals("FizzBuzz", fizzBuzz.getOutput(number))
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["2", "4", "41"])
+    fun `return the number himself if number is not divisible by 3 and not divisible by 5 `(number: String) {
+        assertEquals(number, fizzBuzz.getOutput(number))
     }
 
 
