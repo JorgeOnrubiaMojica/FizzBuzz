@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 import kotlin.test.assertEquals
 
 internal class FizzBuzzShould() {
@@ -16,13 +18,17 @@ internal class FizzBuzzShould() {
         assertEquals("1", fizzBuzz.getOutput("1"))
     }
 
-    @Test
-    fun `return Fizz if number is divisible by 3`(){
-        assertEquals("Fizz", fizzBuzz.getOutput("3"))
+    @ParameterizedTest
+    @ValueSource(strings = ["3", "6", "9"])
+    fun `return Fizz if number is divisible by 3`(number: String){
+        assertEquals("Fizz", fizzBuzz.getOutput(number))
     }
 
-    @Test
-    fun `return FizzBuzz if number is divisible by 5`(){
-        assertEquals("Buzz", fizzBuzz.getOutput("5"))
+    @ParameterizedTest
+    @ValueSource(strings = ["5", "10"])
+    fun `return FizzBuzz if number is divisible by 5`(number: String) {
+        assertEquals("Buzz", fizzBuzz.getOutput(number))
     }
+
+
 }
